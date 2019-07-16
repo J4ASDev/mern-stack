@@ -1,4 +1,6 @@
+require('dotenv').config();
 const app = require('./app');
+require('./db');
 
 const init = async () => {
   await app.listen(4000);
