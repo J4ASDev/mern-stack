@@ -1,21 +1,38 @@
+const Note = require('../models/note');
+
 const notesCtrl = {
-  getNote: (req, res) => {
-    res.json({ message: {} });
+  getNote: async (req, res) => {
+    const note = await Note.findById(req.params.id)
+    res.json({ note });
+  },
+  
+  getListNotes: async (req, res) => {
+    const notes = await Note.find();
+    res.json({ notes });
   },
 
-  getListNotes: (req, res) => {
-    res.json({ message: [] });
-  },
+  createNote: async (req, res) => {
+    const { title, description, date, author } = req.body;
+    const newNote = new Note({
+      title,
+      description,
+      date,
+      author
+    });
 
-  createNote: (req, res) => {
+    await newNote.save();
     res.json({ message: 'Note saved' });
   },
 
-  updateNote: (req, res) => {
+  updateNote: async (req, res) => {
+    const { title, description, author } = req.body;
+
+    await Note.findOneAndUpdate({_id: req.params.id} , { title, description, author });
     res.json({ message: 'Note updated' });
   },
 
-  deleteNote: (req, res) => {
+  deleteNote: async (req, res) => {
+    await Note.findOneAndDelete({ _id:req.params.id });
     res.json({ message: 'Note deleted' });
   }
 };
