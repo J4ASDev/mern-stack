@@ -1,4 +1,4 @@
 module.exports= app => {
-  app.get('/users', (req, res) => res.send(`I'm on users`));
-  app.get('/notes', (req, res) => res.send(`I'm on notes`));
+  app.use('/api/users', require('./users'));
+  app.use('/api/notes', require('./notes'));
 }

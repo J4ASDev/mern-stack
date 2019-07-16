@@ -1,7 +1,6 @@
-const express = require('express');
-const app = express();
+const app = require('express')();
 
-require('./utils/middlewares')(app);
+require('./middlewares')(app);
 require('./routes')(app);
 
 module.exports = app;
