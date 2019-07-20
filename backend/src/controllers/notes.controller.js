@@ -1,6 +1,6 @@
 const Note = require('../models/note');
 
-const notesCtrl = {
+const notesController = {
   getNote: async (req, res) => {
     const note = await Note.findById(req.params.id)
     res.json({ note });
@@ -37,4 +37,4 @@ const notesCtrl = {
   }
 };
 
-module.exports = notesCtrl;
+module.exports = notesController;
