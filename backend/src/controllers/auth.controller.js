@@ -5,9 +5,9 @@ const authController = {
     const { username, password } = req.body;
     const user = await User.findOne({ username, password });
 
-    if (!user) res.status(401).json({user, auth: true});
+    if (!user) res.status(401).json({ message: 'User does not exist.' });
 
-    res.status(200).json({user, auth: false});
+    res.status(201).json(user);
   },
 
   register: async (req, res) => {
@@ -16,9 +16,17 @@ const authController = {
 
     try {
       await user.save();
-      res.status(200).json({ user, auth: true });
-    } catch {
-      res.status(409).json({ auth: false });
+      res.status(200).json(user);
+    } catch (err){
+      if(err.code = 11000) {
+        return res.status(409).json({
+          message: 'Username already exists.'
+        });
+      }
+
+      return res.status(400).json({
+        message: 'Username has not been created, try again.'
+      });
     }
   }
 };
