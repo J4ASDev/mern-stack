@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
-import HomeLayout from '../Components/Home';
+import CreateNotesLayout from '../Components/CreateNotes';
 
 import { connect } from 'react-redux';
 import { getListNotes } from '../actions/notes';
 
-class Home extends Component {
+class CreateNotes extends Component {
   render() {
     return (
-      <HomeLayout />
+      <CreateNotesLayout />
     );
-  }
-
-  componentDidMount() {
-    // this.props.getListNotes()
   }
 }
 
@@ -24,4 +20,4 @@ const mapDispatchToProps = {
   getListNotes
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateNotes);

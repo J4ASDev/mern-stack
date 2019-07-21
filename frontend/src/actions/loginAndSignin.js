@@ -1,6 +1,6 @@
 import { LOGIN_AND_SIGNIN, LOGIN_AND_SIGNIN_FAILED } from '../actionTypes';
 import { createBrowserHistory } from 'history';
-import { API } from '../config';
+import { API } from '../libs/config';
 
 const history = createBrowserHistory();
 
