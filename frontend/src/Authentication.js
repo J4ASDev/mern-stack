@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import Wrapper from './Components/UI/Wrapper';
 import Home from './Pages/Home';
-import CreateNotes from './Pages/CreateNotes';
+import Notes from './Pages/Notes';
 import LoginAndSignin from './Pages/LoginAndSignin';
 
 const PrivateRoute = ({ component: Page, auth, ...rest }) => (
@@ -27,7 +27,7 @@ const Authentication = ({ auth }) => (
     <Switch>
       <Route exact path='/auth' component={LoginAndSignin} />
       <PrivateRoute exact auth={auth} path='/' component={Home} />
-      <PrivateRoute exact auth={auth} path='/create-note' component={CreateNotes} />
+      <PrivateRoute exact auth={auth} path='/create-note' component={Notes} />
       <Redirect to='/' />
     </Switch>
   </BrowserRouter>

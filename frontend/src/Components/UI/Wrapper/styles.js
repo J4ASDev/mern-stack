@@ -6,3 +6,8 @@ export const Wrapper = styled.div`
   height: 100vh;
   gap: 10px;
 `;
+
+export const ContentWrapper = styled.div`
+  display: grid;
+  justify-content: center;
+`;

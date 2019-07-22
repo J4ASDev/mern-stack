@@ -1,4 +1,4 @@
-import { LOGIN_AND_SIGNIN, LOGIN_AND_SIGNIN_FAILED } from '../actionTypes';
+import { LOGIN_AND_SIGNIN, LOGIN_AND_SIGNIN_FAILED, LOGOUT } from '../actionTypes';
 
 const initialState = {
   username: localStorage.getItem('username') || null,
@@ -23,6 +23,14 @@ export default (state = initialState, action) => {
       const { message } = action.payload;
       return { ...state, message }
     };
+
+    case LOGOUT: {
+      return {
+        id: null,
+        username: null,
+        message: null
+      }
+    }
 
     default:
       return state;

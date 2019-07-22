@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import loginAndSignin from './loginAndSignin';
+import notes from './notes';
 
 const reducers = combineReducers({
-  loginAndSignin
+  loginAndSignin,
+  notes
 });
 
 export default reducers;

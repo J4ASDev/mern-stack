@@ -18,9 +18,10 @@ export const Logo = styled.img`
 `;
 
 export const FormWrapper = styled.form`
+  width: 300px;
+  height: 148px;
   display: grid;
   gap: 15px;
-  height: 148px;
 `;
 
 export const ToggleWrapper = styled.div`
@@ -36,29 +37,4 @@ export const ToggleWrapper = styled.div`
     font-weight: bold;
     cursor: pointer;
   }
-`;
-
-export const FormInput = styled.input`
-  width: 300px;
-  height: 15px;
-  font-size: 16px;
-  font-weight: bold;
-  padding: 10px;
-  background: ${props => props.theme.gray};
-  border: none;
-  border-bottom: 3px solid ${props => props.theme.grayShadow};
-  border-radius: 5px;
-  outline: none;
-`;
-
-export const Button = styled.button`
-  height: 40px;
-  border: none;
-  font-size: 20px;
-  font-weight: bold;
-  color: white;
-  cursor: pointer;
-  background: ${props => props.theme.lightGreen};
-  border-radius: 6px;
-  border-bottom: 3px solid ${props => props.theme.darkGreen};
 `;

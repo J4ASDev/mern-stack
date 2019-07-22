@@ -1,5 +1,6 @@
 import React from 'react';
-import { Wrapper, Logo, FormWrapper, ToggleWrapper, FormInput, Button } from './styles';
+import { Wrapper, Logo, FormWrapper, ToggleWrapper } from './styles';
+import { FormInput, Button } from '../../libs/globalStyles';
 
 const LoginAndSigninLayout = ({ singin, handleToggle, handleAuth }) => (
   <Wrapper>

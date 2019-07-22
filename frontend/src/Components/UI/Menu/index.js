@@ -2,13 +2,20 @@ import React from 'react';
 import { MenuWrapper, LogOut } from './styles';
 import { withRouter, NavLink } from 'react-router-dom';
 
-const MenuLayout = () => (
+import { connect } from 'react-redux';
+import { logOut } from '../../../actions/loginAndSignin';
+
+const MenuLayout = ({ logOut, history }) => (
   <MenuWrapper>
     <p>Image</p>
     <NavLink to='/'>Notes</NavLink>
     <NavLink to='/create-note'>Create note</NavLink>
-    <LogOut>Log Out</LogOut>
+    <LogOut onClick={() => logOut(history)}>Log Out</LogOut>
   </MenuWrapper>
 );
 
-export default withRouter(MenuLayout);
+const mapDispatchToProps = {
+  logOut
+};
+
+export default withRouter(connect(null, mapDispatchToProps)(MenuLayout));
