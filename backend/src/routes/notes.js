@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const {
-  getNote,
   getListNotes,
   createNote,
   updateNote,
@@ -8,11 +7,12 @@ const {
 } = require('../controllers/notes.controller');
 
 router.route('/')
-  .get(getListNotes)
+  .post(getListNotes);
+  
+router.route('/create')
   .post(createNote);
 
 router.route('/:id')
-  .get(getNote)
   .put(updateNote)
   .delete(deleteNote);
 

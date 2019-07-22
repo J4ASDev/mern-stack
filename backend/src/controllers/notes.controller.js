@@ -1,39 +1,38 @@
 const Note = require('../models/note');
 
 const notesController = {
-  getNote: async (req, res) => {
-    const note = await Note.findById(req.params.id)
-    res.json({ note });
-  },
-  
   getListNotes: async (req, res) => {
-    const notes = await Note.find();
+    const { author } = req.body;
+    const notes = await Note.find({ author });
     res.json({ notes });
   },
 
   createNote: async (req, res) => {
     const { title, description, date, author } = req.body;
-    const newNote = new Note({
-      title,
-      description,
-      date,
-      author
-    });
+    const note = new Note({ title, description, date, author });
 
-    await newNote.save();
-    res.json({ message: 'Note saved' });
+    await note.save();
+    res.status(200).json({ note });
   },
 
   updateNote: async (req, res) => {
     const { title, description, author } = req.body;
-
-    await Note.findOneAndUpdate({_id: req.params.id} , { title, description, author });
-    res.json({ message: 'Note updated' });
+    
+    try {
+      await Note.findOneAndUpdate({_id: req.params.id} , { title, description, author });
+      res.status(204).json({});
+    } catch(err) {
+      res.status(403).json({ message: 'Note has not been updated, try again.' });
+    }
   },
 
   deleteNote: async (req, res) => {
-    await Note.findOneAndDelete({ _id:req.params.id });
-    res.json({ message: 'Note deleted' });
+    try {
+      await Note.findOneAndDelete({ _id:req.params.id });
+      res.status(204).json({});
+    } catch(err) {
+      res.status(403).json({ message: 'Note has not been deleted, try again.' });
+    }
   }
 };
 
