@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import HomeLayout from '../Components/Home';
-
-import { withRouter } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/notes';
+
+import HomeLayout from '../Components/Home';
 
 class Home extends Component {
   handleDelete = (id, author) => {
@@ -46,4 +45,4 @@ const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(actions, dispatch)
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Home));
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -7,7 +7,7 @@ export const Wrapper = styled.section`
   grid-template-rows: 5fr 6fr;
   gap: 25px;
 `;
-  
+
 export const Logo = styled.img`
   width: 100%;
   max-width: 150px;
@@ -18,7 +18,7 @@ export const Logo = styled.img`
 `;
 
 export const FormWrapper = styled.form`
-  width: 300px;
+  width: 365px;
   height: 148px;
   display: grid;
   gap: 15px;

@@ -4,8 +4,6 @@ import LoginAndSigninLayout from '../Components/LoginAndSignin';
 import { connect } from 'react-redux';
 import { loginAndSignin } from '../actions/loginAndSignin';
 
-import { withRouter } from 'react-router-dom';
-
 class LoginAndSignin extends Component {
   state = {
     singin: false
@@ -24,8 +22,8 @@ class LoginAndSignin extends Component {
     const username = data.get('username');
     const password = data.get('password');
 
-    this.props.history.push('/');
     this.props.loginAndSignin({ username, password }, actionType);
+    window.location.replace('/');
   }
 
   render() {
@@ -37,10 +35,21 @@ class LoginAndSignin extends Component {
       />
     );
   }
+
+  componentDidMount() {
+    const { idUser } = this.props;
+    const authenticated = idUser || localStorage.getItem('id');
+
+    if(authenticated) window.location.replace('/');
+  }
 }
+
+const mapStateToProps = ({ loginAndSignin }) => ({
+  idUser: loginAndSignin.idUser
+});
 
 const mapDispatchToProps = {
   loginAndSignin
 };
 
-export default withRouter(connect(null, mapDispatchToProps)(LoginAndSignin));
+export default connect(mapStateToProps, mapDispatchToProps)(LoginAndSignin);

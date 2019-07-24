@@ -21,7 +21,9 @@ export default (state = initialState, action) => {
       const { notes } = action.payload;
       return {
         ...state,
-        allNotes: [ ...notes ]
+        allNotes: [
+          ...notes
+        ]
       }
     }
 

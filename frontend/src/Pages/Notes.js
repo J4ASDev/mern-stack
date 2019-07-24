@@ -10,6 +10,8 @@ class Notes extends Component {
   handleForm = event => {
     event.preventDefault();
 
+    const { updateNote, createNote } = this.props.actions;
+
     const form = document.getElementById('notesForm');
     const data = new FormData(form);
 
@@ -19,11 +21,10 @@ class Notes extends Component {
     const author = data.get('author');
     const date = data.get('date') || new Date();
 
-    if (!id) this.props.actions.createNote({ title, description, author, date });
-
     if (id) {
-      this.props.actions.updateNote(id, { title, description, author, date });
-      this.props.actions.assingStateNote({});
+      updateNote(id, { title, description, author, date });
+    } else {
+      createNote({ title, description, author, date });
     }
     
     this.props.history.push('/');
@@ -31,8 +32,12 @@ class Notes extends Component {
 
   render() {
     const { username, title, description, date } = this.props;
+    const titleForm = title ? 'Edit a note' : 'Create a new note';
+    const btnTxt = title ? 'Edit' : 'Create';
     return (
       <NotesLayout
+        titleForm={titleForm}
+        btnTxt={btnTxt}
         handleForm={this.handleForm}
         author={username}
         title={title}

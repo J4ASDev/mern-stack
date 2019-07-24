@@ -21,7 +21,10 @@ export default (state = initialState, action) => {
 
     case LOGIN_AND_SIGNIN_FAILED: {
       const { message } = action.payload;
-      return { ...state, message }
+      return {
+        ...state,
+        message
+      }
     };
 
     case LOGOUT: {

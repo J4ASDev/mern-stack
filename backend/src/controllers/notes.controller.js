@@ -9,10 +9,14 @@ const notesController = {
 
   createNote: async (req, res) => {
     const { title, description, date, author } = req.body;
-    const note = new Note({ title, description, date, author });
 
-    await note.save();
-    res.status(200).json({ note });
+    try {
+      const note = new Note({ title, description, date, author }); 
+      await note.save();
+      res.status(200).json(note);
+    } catch (err) {
+      res.status(403).json({ message: 'Note has not been created, try again.' });
+    }
   },
 
   updateNote: async (req, res) => {

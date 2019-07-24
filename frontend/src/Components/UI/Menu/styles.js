@@ -5,6 +5,7 @@ export const MenuWrapper = styled.menu`
   font-size: 20px;
   font-weight: bold;
   display: grid;
+  align-content: center;
   grid-template-columns: 100px repeat(2, 1fr) 100px;
   gap: 20px;
   padding: 0 20px;
@@ -23,6 +24,15 @@ export const MenuWrapper = styled.menu`
     display: grid;
     justify-self: end;
   }
+`;
+
+export const Logo = styled.img`
+  width: 100%;
+  max-width: 70px;
+  display: grid;
+  align-self: end;
+  justify-self: center;
+  filter: drop-shadow(5px 5px 5px #0e0e0e5e);
 `;
 
 export const LogOut = styled.button`

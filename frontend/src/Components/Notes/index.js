@@ -2,10 +2,10 @@ import React from 'react';
 import { Wrapper, FormWrapper } from './styles';
 import { FormInput, FormTextArea, Button } from '../../libs/globalStyles';
 
-const NotesLayout = ({ handleForm, title, description, author, date }) => (
+const NotesLayout = ({ titleForm, btnTxt, handleForm, title, description, author, date }) => (
   <Wrapper>
-    <h1>{ title ? 'Edit a note' : 'Create a new note' }</h1>
-    <FormWrapper id='notesForm' onSubmit={event => handleForm(event, title)}>
+    <h1>{ titleForm }</h1>
+    <FormWrapper id='notesForm' onSubmit={handleForm}>
       <FormInput
         name='title'
         type='text'
@@ -32,7 +32,7 @@ const NotesLayout = ({ handleForm, title, description, author, date }) => (
         type='date'
         defaultValue={date}
       />
-      <Button>{ title ? 'Edit' : 'Create' }</Button>
+      <Button>{ btnTxt }</Button>
     </FormWrapper>
   </Wrapper>
 );
